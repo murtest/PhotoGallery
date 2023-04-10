@@ -51,8 +51,10 @@ class PhotoPageFragment : Fragment() {
                     }
 
                     override fun onReceivedTitle(view: WebView?, title: String?) {
-                        val parent = requireActivity() as AppCompatActivity
-                        parent.supportActionBar?.subtitle = title
+                        if (isAdded) {
+                            val parent = requireActivity() as AppCompatActivity
+                            parent.supportActionBar?.subtitle = title
+                        }
                     }
                 }
                 loadUrl(args.photoPageUri.toString())
